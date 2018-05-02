@@ -500,12 +500,8 @@ func findHandler(w http.ResponseWriter, r *http.Request) {
 		deferredAccessLogging(accessLogger, &accessLogDetails, t0, logAsError)
 	}()
 
-	if query == "" {
-		http.Error(w, "missing parameter `query`", http.StatusBadRequest)
-		accessLogDetails.HttpCode = http.StatusBadRequest
-		accessLogDetails.Reason = "missing parameter `query`"
-		logAsError = true
-		return
+	if query == "" || query == "/" || query == "." {
+		query = "*"
 	}
 
 	if format == "" {
