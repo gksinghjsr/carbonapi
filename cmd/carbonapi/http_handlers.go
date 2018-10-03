@@ -358,7 +358,7 @@ func renderHandler(w http.ResponseWriter, r *http.Request) {
 					metricMap[mfetch] = append(metricMap[mfetch], r)
 				}
 			}
-			accessLogDetails.CarbonzipperResponseSizeBytes = int64(size)
+			accessLogDetails.CarbonzipperResponseSizeBytes += int64(size)
 			close(rch)
 
 			if len(errors) != 0 {
