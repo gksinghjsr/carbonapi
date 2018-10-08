@@ -1,68 +1,45 @@
-# Carbonapi
+# Booking.com carbonapi
 
-
-Carbonapi is a Go-based Graphite frontend. It provides two binaries,
-`carbonapi` and `carbonzipper`, that unify responses from multiple Graphite
-backends and provide math and graphing functions.
-
-This project is run in production at Booking.com. We are in the process of
-documenting its installation and setup, but can answer any questions that
-interested persons have.
-
-CarbonAPI supports a significant subset of graphite functions; see
-[COMPATIBILITY](COMPATIBILITY.md). In our testing it has shown to be 5x-10x
-faster than requesting data from graphite-web.
+Main files for carbonapi and carbonzipper.
 
 ## Build
 
-To build both the `carbonapi` and `carbonzipper` binaries, run:
+To build the `carbonapi` and `carbonzipper` binaries, run:
 ```
 $ make
 ```
-To build the binaries with debug symbols, run:
+We use Go modules for dependency management, but vendor the dependencies to
+ensure repeatable builds across different staging hosts that may not have the
+same packages cached locally. Use
 ```
-$ make debug
+$ make vendor
 ```
-To build the binaries without Cairo, that is, without support for image
-rendering, run:
-```
-$ make nocairo
-```
-We do not provide packages for install at this time. Contact us if you're
-interested in those.
+to update the vendored depenencies after making changes.
 
+## What? Why?
 
-## Requirements
+The main development of carbonapi happens in the Booking.com Github repo:
 
-At least version 1.8 of Go. Booking.com builds its binaries with the latest
-stable release of Go at any time.
+    https://www.github.com/bookingcom/carbonapi
 
-At the moment, we only guarantee that Carbonapi can talk to the
-[go-carbon](https://github.com/go-graphite/go-carbon)
-Graphite store. We are interested in supporting other stores.
+However, we still need to be able to roll out code using git-deploy, derp and
+Gitlab internally.
 
+Our solution to this, at the moment, is to treat almost everything in the
+Github repo as library code we pull in, and only keep `main` package files in
+the Gitlab repo that we build code from. This way we avoid the headache of
+keeping the Github and Gitlab repos in sync, and very hopefully avoid having
+the two drift apart.
 
-## OSX Build Notes
+This also has the upshot that if we want to do Booking.com specific things,
+like talk to sysctl, use rosters, or send events of some kind, we can do that
+in these `main` packages without the wider world being any wiser.
 
-Some additional steps may be needed to build carbonapi with cairo rendering on
-MacOSX.
+## Modules
 
-Install cairo:
+Read about Go modules here:
 
-```
-$ brew install Caskroom/cask/xquartz
+    https://github.com/golang/go/wiki/Modules
 
-$ brew install cairo --with-x11
-```
-
-
-## Acknowledgement
-
-This program was originally developed for Booking.com.  With approval
-from Booking.com, the code was generalised and published as Open Source
-on GitHub, for which the author would like to express his gratitude.
-
-
-## License
-
-This code is licensed under the BSD-2 license.
+Note that our staging hosts work in `GOPATH` and do _not_ have `GO111MODULE=on`
+set.
