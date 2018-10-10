@@ -37,10 +37,6 @@ build:
 	$(PKGCONF) $(GO) build $(TAGS) $(LDLAGS) $(GCFLAGS) $(PKG_CARBONAPI)
 	$(PKGCONF) $(GO) build $(TAGS) $(LDLAGS) $(GCFLAGS) $(PKG_CARBONZIPPER)
 
-.PHONY: vendor
-vendor:
-	go mod vendor
-
 vet:
 	go vet -composites=false ./...
 

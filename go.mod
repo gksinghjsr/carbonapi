@@ -5,7 +5,7 @@ require (
 	github.com/JaderDias/movingmedian v0.0.0-20170611140316-de8c410559fa // indirect
 	github.com/aclements/go-moremath v0.0.0-20180329182055-b1aff36309c7 // indirect
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
-	github.com/bookingcom/carbonapi v0.0.0-20181008112234-ca8f9cd7e8ca
+	github.com/bookingcom/carbonapi v0.0.0-20181010114607-d5b6a62ddfd0
 	github.com/bradfitz/gomemcache v0.0.0-20180710155616-bc664df96737 // indirect
 	github.com/dgryski/go-expirecache v0.0.0-20170314133854-743ef98b2adb // indirect
 	github.com/dgryski/go-onlinestats v0.0.0-20170612111826-1c7d19468768 // indirect
@@ -27,7 +27,7 @@ require (
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/mjibson/go-dsp v0.0.0-20180508042940-11479a337f12 // indirect
 	github.com/peterbourgon/g2g v0.0.0-20161124161852-0c2bab2b173d
-	github.com/pkg/errors v0.8.0
+	github.com/pkg/errors v0.8.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v0.8.0
 	github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910 // indirect

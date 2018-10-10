@@ -35,6 +35,15 @@ This also has the upshot that if we want to do Booking.com specific things,
 like talk to sysctl, use rosters, or send events of some kind, we can do that
 in these `main` packages without the wider world being any wiser.
 
+## Updating dependencies
+
+Run
+```
+$ go get -u github.com/bookingcom/carbonapi
+$ go mod vendor
+```
+and then check-in and commit the results. This requires Go modules.
+
 ## Modules
 
 Read about Go modules here:
