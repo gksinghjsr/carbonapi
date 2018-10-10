@@ -34,8 +34,8 @@ debug: build
 nocairo: $(SOURCES) build
 
 build:
-	$(PKGCONF) $(GO) build $(TAGS) $(LDLAGS) $(GCFLAGS) $(PKG_CARBONAPI)
-	$(PKGCONF) $(GO) build $(TAGS) $(LDLAGS) $(GCFLAGS) $(PKG_CARBONZIPPER)
+	$(PKGCONF) $(GO) build $(TAGS) $(LDFLAGS) $(GCFLAGS) $(PKG_CARBONAPI)
+	$(PKGCONF) $(GO) build $(TAGS) $(LDFLAGS) $(GCFLAGS) $(PKG_CARBONZIPPER)
 
 vet:
 	go vet -composites=false ./...
