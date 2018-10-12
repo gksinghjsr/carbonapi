@@ -6,7 +6,7 @@ github.com/JaderDias/movingmedian
 github.com/aclements/go-moremath/mathx
 # github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
 github.com/beorn7/perks/quantile
-# github.com/bookingcom/carbonapi v0.0.0-20181010114607-d5b6a62ddfd0
+# github.com/bookingcom/carbonapi v0.0.0-20181012113448-81b7e49516ab
 github.com/bookingcom/carbonapi/cache
 github.com/bookingcom/carbonapi/carbonapipb
 github.com/bookingcom/carbonapi/cfg

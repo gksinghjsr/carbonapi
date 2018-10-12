@@ -12,6 +12,8 @@ github.com/bookingcom/carbonapi v0.0.0-20181008112234-ca8f9cd7e8ca h1:wBd/lEvKzM
 github.com/bookingcom/carbonapi v0.0.0-20181008112234-ca8f9cd7e8ca/go.mod h1:JvMKH0YR6qqMSCkJfl6iAWNeBLzt400n9rYLxfUao/o=
 github.com/bookingcom/carbonapi v0.0.0-20181010114607-d5b6a62ddfd0 h1:ixmvWX8ITHY4mJD4lYkqI1xnkOU8yHG7Q2Tbb2GNNlw=
 github.com/bookingcom/carbonapi v0.0.0-20181010114607-d5b6a62ddfd0/go.mod h1:JvMKH0YR6qqMSCkJfl6iAWNeBLzt400n9rYLxfUao/o=
+github.com/bookingcom/carbonapi v0.0.0-20181012113448-81b7e49516ab h1:Bn9K57NuhZO3uv9bzNt0DmN4nxArbPSv9HSRarIVpsM=
+github.com/bookingcom/carbonapi v0.0.0-20181012113448-81b7e49516ab/go.mod h1:JvMKH0YR6qqMSCkJfl6iAWNeBLzt400n9rYLxfUao/o=
 github.com/bradfitz/gomemcache v0.0.0-20180710155616-bc664df96737 h1:rRISKWyXfVxvoa702s91Zl5oREZTrR3yv+tXrrX7G/g=
 github.com/bradfitz/gomemcache v0.0.0-20180710155616-bc664df96737/go.mod h1:PmM6Mmwb0LSuEubjR8N7PtNe1KxZLtOUHtbeikc5h60=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
