@@ -6,10 +6,12 @@ github.com/JaderDias/movingmedian
 github.com/aclements/go-moremath/mathx
 # github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
 github.com/beorn7/perks/quantile
-# github.com/bookingcom/carbonapi v0.0.0-20181012113448-81b7e49516ab
+# github.com/bookingcom/carbonapi v0.0.0-20181015121445-5cc02f169e1b
+github.com/bookingcom/carbonapi/app/carbonapi
+github.com/bookingcom/carbonapi/cfg
+github.com/bookingcom/carbonapi/app/zipper
 github.com/bookingcom/carbonapi/cache
 github.com/bookingcom/carbonapi/carbonapipb
-github.com/bookingcom/carbonapi/cfg
 github.com/bookingcom/carbonapi/date
 github.com/bookingcom/carbonapi/expr
 github.com/bookingcom/carbonapi/expr/functions
@@ -120,8 +122,6 @@ github.com/bookingcom/carbonapi/expr/rewrite/applyByNode
 github.com/bookingcom/carbonapi/expr/holtwinters
 # github.com/bradfitz/gomemcache v0.0.0-20180710155616-bc664df96737
 github.com/bradfitz/gomemcache/memcache
-# github.com/davecgh/go-spew v1.1.1
-github.com/davecgh/go-spew/spew
 # github.com/dgryski/go-expirecache v0.0.0-20170314133854-743ef98b2adb
 github.com/dgryski/go-expirecache
 # github.com/dgryski/go-onlinestats v0.0.0-20170612111826-1c7d19468768
@@ -188,8 +188,6 @@ github.com/pelletier/go-toml
 github.com/peterbourgon/g2g
 # github.com/pkg/errors v0.8.0
 github.com/pkg/errors
-# github.com/pmezard/go-difflib v1.0.0
-github.com/pmezard/go-difflib/difflib
 # github.com/prometheus/client_golang v0.8.0
 github.com/prometheus/client_golang/prometheus
 github.com/prometheus/client_golang/prometheus/promhttp
@@ -217,8 +215,6 @@ github.com/spf13/jwalterweatherman
 github.com/spf13/pflag
 # github.com/spf13/viper v1.2.1
 github.com/spf13/viper
-# github.com/stretchr/testify v1.2.2
-github.com/stretchr/testify/assert
 # github.com/wangjohn/quickselect v0.0.0-20161129230411-ed8402a42d5f
 github.com/wangjohn/quickselect
 # go.uber.org/atomic v1.3.2
