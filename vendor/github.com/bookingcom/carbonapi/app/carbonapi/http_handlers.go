@@ -1,4 +1,4 @@
-package main
+package carbonapi
 
 import (
 	"bytes"
@@ -47,6 +47,9 @@ const (
 	protobuf3Format = "protobuf3"
 	pickleFormat    = "pickle"
 )
+
+// for testing
+var timeNow = time.Now
 
 type Rule map[string]string
 type RuleConfig struct {
@@ -375,7 +378,7 @@ func renderHandler(w http.ResponseWriter, r *http.Request) {
 		var newTargets []string
 		rewritten, newTargets, err = expr.RewriteExpr(exp, from32, until32, metricMap)
 		if err != nil && err != parser.ErrSeriesDoesNotExist {
-			// TODO(gmagnusson): Set access logger HTTP code to != 200
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			errors[target] = err.Error()
 			accessLogDetails.Reason = err.Error()
 			logAsError = true
@@ -980,8 +983,8 @@ func blockHeaders(w http.ResponseWriter, r *http.Request) {
 
 	failResponse := []byte(`{"success":"false"}`)
 	if config.BlockHeaderFile == "" {
-		w.Write(failResponse)
 		w.WriteHeader(http.StatusBadRequest)
+		w.Write(failResponse)
 		return
 	}
 
@@ -1095,4 +1098,76 @@ func debugVersionHandler(w http.ResponseWriter, r *http.Request) {
 	}()
 
 	fmt.Fprintf(w, "GIT_TAG: %s\n", BuildVersion)
+}
+
+func buildParseErrorString(target, e string, err error) string {
+	msg := fmt.Sprintf("%s\n\n%-20s: %s\n", http.StatusText(http.StatusBadRequest), "Target", target)
+	if err != nil {
+		msg += fmt.Sprintf("%-20s: %s\n", "Error", err.Error())
+	}
+	if e != "" {
+		msg += fmt.Sprintf("%-20s: %s\n%-20s: %s\n",
+			"Parsed so far", target[0:len(target)-len(e)],
+			"Could not parse", e)
+	}
+	return msg
+}
+
+type treejson struct {
+	AllowChildren int            `json:"allowChildren"`
+	Expandable    int            `json:"expandable"`
+	Leaf          int            `json:"leaf"`
+	ID            string         `json:"id"`
+	Text          string         `json:"text"`
+	Context       map[string]int `json:"context"` // unused
+}
+
+var treejsonContext = make(map[string]int)
+
+func findTreejson(globs pb.GlobResponse) ([]byte, error) {
+	var b bytes.Buffer
+
+	var tree = make([]treejson, 0)
+
+	seen := make(map[string]struct{})
+
+	basepath := globs.Name
+
+	if i := strings.LastIndex(basepath, "."); i != -1 {
+		basepath = basepath[:i+1]
+	} else {
+		basepath = ""
+	}
+
+	for _, g := range globs.Matches {
+
+		name := g.Path
+
+		if i := strings.LastIndex(name, "."); i != -1 {
+			name = name[i+1:]
+		}
+
+		if _, ok := seen[name]; ok {
+			continue
+		}
+		seen[name] = struct{}{}
+
+		t := treejson{
+			ID:      basepath + name,
+			Context: treejsonContext,
+			Text:    name,
+		}
+
+		if g.IsLeaf {
+			t.Leaf = 1
+		} else {
+			t.AllowChildren = 1
+			t.Expandable = 1
+		}
+
+		tree = append(tree, t)
+	}
+
+	err := json.NewEncoder(&b).Encode(tree)
+	return b.Bytes(), err
 }
