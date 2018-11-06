@@ -5,7 +5,7 @@ require (
 	github.com/JaderDias/movingmedian v0.0.0-20170611140316-de8c410559fa // indirect
 	github.com/aclements/go-moremath v0.0.0-20180329182055-b1aff36309c7 // indirect
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
-	github.com/bookingcom/carbonapi v0.0.0-20181015121445-5cc02f169e1b
+	github.com/bookingcom/carbonapi v0.0.0-20181015121445-dfbf0294c466
 	github.com/bradfitz/gomemcache v0.0.0-20180710155616-bc664df96737 // indirect
 	github.com/dgryski/go-expirecache v0.0.0-20170314133854-743ef98b2adb // indirect
 	github.com/dgryski/go-onlinestats v0.0.0-20170612111826-1c7d19468768 // indirect
